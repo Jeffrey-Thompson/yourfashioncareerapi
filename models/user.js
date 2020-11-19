@@ -18,6 +18,15 @@ const userSchema = new Schema(
         type: String, 
         required: true 
     },
+    image: String,
+    firstName: String,
+    lastName: String,
+    link: String,
+    birthday: Date,
+    isAdmin: {
+        type: Boolean,
+        default: false
+    }
   },
   { timestamps: true }
 );
