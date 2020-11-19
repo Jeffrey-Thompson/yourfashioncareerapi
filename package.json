@@ -1,0 +1,27 @@
+{
+  "name": "yourfashioncareerapi",
+  "version": "1.0.0",
+  "description": "glassdoor for fashion",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jeffrey-Thompson/yourfashioncareerapi.git"
+  },
+  "keywords": [
+    "fashion"
+  ],
+  "author": "Donavon Ellison donavonelli@yahoo.com Jeffrey Thompson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jeffrey-Thompson/yourfashioncareerapi/issues"
+  },
+  "homepage": "https://github.com/Jeffrey-Thompson/yourfashioncareerapi#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.10.15"
+  }
+}
