@@ -1,7 +1,6 @@
 const db = require('../models');
 
 
-// Rename all places that has College with Company like below
 const index = (req, res) => {
     db.Company.find({}, (err, foundCompanys) => {
         if (err) console.log('Error in companies#index:', err);
@@ -13,40 +12,40 @@ const index = (req, res) => {
 };
 
 const show = (req, res) => {
-    db.College.findById(req.params.id, (err, foundCollege) => {
-        if (err) console.log('Error in colleges#show:', err);
+    db.Company.findById(req.params.id, (err, foundCompany) => {
+        if (err) console.log('Error in Companys#show:', err);
 
-        if(!foundCollege) return res.status(200).json({ "message": "No college with that id found in db" });
+        if(!foundCompany) return res.status(200).json({ "message": "No Company with that id found in db" });
 
-        res.status(200).json({ "college": foundCollege });
+        res.status(200).json({ "company": foundCompany });
     });
 };
 
 const create = (req, res) => {
-    db.College.create(req.body, (err, savedCollege) => {
-        if (err) console.log('Error in colleges#create:', err);
+    db.Company.create(req.body, (err, savedCompany) => {
+        if (err) console.log('Error in Companys#create:', err);
 
-        res.status(201).json({ "college": savedCollege });
+        res.status(201).json({ "company": savedCompany });
     });
 };
 
 const update = (req, res) => {
-    db.College.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedCollege) => {
-        if (err) console.log('Error in Colleges#update:', err);
+    db.Company.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedCompany) => {
+        if (err) console.log('Error in Companys#update:', err);
 
-        if(!updatedCollege) return res.status(200).json({ "message": "No College with that id found in db" });
+        if(!updatedCompany) return res.status(200).json({ "message": "No Company with that id found in db" });
 
-        res.status(200).json({ "College": updatedCollege });
+        res.status(200).json({ "company": updatedCompany });
     });
 };
 
 const destroy = (req, res) => {
-    db.College.findByIdAndDelete(req.params.id, (err, deletedCollege) => {
-        if (err) console.log('Error in Colleges#destroy:', err);
+    db.Company.findByIdAndDelete(req.params.id, (err, deletedCompany) => {
+        if (err) console.log('Error in Companys#destroy:', err);
 
-        if(!deletedCollege) return res.status(200).json({ "message": "No College with that id found in db" });
+        if(!deletedCompany) return res.status(200).json({ "message": "No Company with that id found in db" });
 
-        res.status(200).json({ "College": deletedCollege });
+        res.status(200).json({ "company": deletedCompany });
     });
 };
 
