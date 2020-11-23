@@ -18,7 +18,11 @@ const CompanySchema = new Schema({
     freedom: Number,
     management: Number,
     growth: Number,
-    numReviews: Number
+    numReviews: Number,
+    reviews: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "review",
+    }],
 });
 
 const Company = mongoose.model('Company', CompanySchema);
