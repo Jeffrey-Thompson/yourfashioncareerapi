@@ -14,8 +14,9 @@ app.use(express.json());
 app.use(cors());
 
 // routes
-app.use("/reviews", routes.reviews)
-
+app.use("/companies", routes.company)
+app.use("/auth", routes.auth);
+app.use("/user", routes.user)
 
 
 
