@@ -5,9 +5,9 @@ const jwt = require("jsonwebtoken");
 // POST Register Route
 const register = async (req, res) => {
   try {
-    const foundProfile = await db.Profile.findOne({ email: req.body.email });
+    const foundUser = await db.User.findOne({ email: req.body.email });
 
-    if (foundProfile) {
+    if (foundUser) {
       return res.send({ message: "Account is already registered" });
     }
 
@@ -16,11 +16,11 @@ const register = async (req, res) => {
     const hash = await bcrypt.hash(req.body.password, salt);
     req.body.password = hash;
     // create user with req.body and hashed password
-    const createdProfile = await db.Profile.create({ ...req.body, password: hash });
+    const createdUser = await db.User.create({ ...req.body, password: hash });
 
     return res
       .status(201)
-      .json({ status: 201, message: "success", createdProfile });
+      .json({ status: 201, message: "success", createdUser });
   } catch (err) {
     return res.status(500).json({
       status: 500,
@@ -32,27 +32,27 @@ const register = async (req, res) => {
 // POST Login Route
 const login = async (req, res) => {
     try {
-      const foundProfile = await await db.Profile.findOne({ email: req.body.email });
+      const foundUser = await await db.User.findOne({ email: req.body.email });
   
-      console.log(foundProfile);
+      console.log(foundUser);
   
-      if (!foundProfile) {
+      if (!foundUser) {
         return res.send({ message: "Email or Password incorrect" });
       }
   
-      const match = await bcrypt.compare(req.body.password, foundProfile.password);
+      const match = await bcrypt.compare(req.body.password, foundUser.password);
   
       if (!match) {
         return res.send({ message: "Email or Password incorrect" });
       }
   
-      const isMatch = await bcrypt.compare(req.body.password, foundProfile.password);
+      const isMatch = await bcrypt.compare(req.body.password, foundUser.password);
   
       if (isMatch) {
         // create a json web token
         const signedJwt = await jwt.sign(
           {
-            _id: foundProfile._id,
+            _id: foundUser._id,
           },
           "super_secret_key",
           {
@@ -64,7 +64,7 @@ const login = async (req, res) => {
         return res.status(200).json({
           status: 200,
           message: "Success",
-          id: foundProfile._id,
+          id: foundUser._id,
           signedJwt,
         });
         // the password provided does not match the password on file.
