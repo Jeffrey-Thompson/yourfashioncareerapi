@@ -14,6 +14,9 @@ const ReviewSchema = new Schema({
     management: Number,
     growth: Number,
     text: String,
+    reviewTitle: String,
+    title: String,
+    employee: String,
     author: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "user",
