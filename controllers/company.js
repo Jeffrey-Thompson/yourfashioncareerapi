@@ -50,14 +50,14 @@ const destroy = (req, res) => {
 };
 
 const reviewIndex = (req, res) => {
-    db.Company.findById(req.params.id, (err, foundCompany) => {
+    db.Review.find({company: req.params.id}, (err, foundReviews) => {
         if (err) console.log('Error in Companys#show:', err);
 
-        if(!foundCompany) return res.status(200).json({ "message": "No Company with that id found in db" });
+        if(!foundReviews) return res.status(200).json({ "message": "No Company with that id found in db" });
 
-        if(!foundCompany.reviews) return res.status(200).json({ "message": "No reviews for this company in db" });
+        // if(!foundCompany.reviews) return res.status(200).json({ "message": "No reviews for this company in db" });
 
-        res.status(200).json({ "reviews": foundCompany.reviews });
+        res.status(200).json({ "reviews": foundReviews });
     });
 };
 
