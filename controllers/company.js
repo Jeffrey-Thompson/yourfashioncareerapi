@@ -122,7 +122,7 @@ const createReview = (req, res) => {
 };
 
 const updateReview = (req, res) => {
-    db.Review.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedReview) => {
+    db.Review.findByIdAndUpdate(req.params.reviewId, req.body, {new: true}, (err, updatedReview) => {
         if (err) console.log('Error in Reviews#update:', err);
 
         if(!updatedReview) return res.status(200).json({ "message": "No Review with that id found in db" });
@@ -132,7 +132,7 @@ const updateReview = (req, res) => {
 };
 
 const deleteReview = (req, res) => {
-    db.Review.findByIdAndDelete(req.params.id, (err, deletedReview) => {
+    db.Review.findByIdAndDelete(req.params.reviewId, (err, deletedReview) => {
         if (err) console.log('Error in Reviews#destroy:', err);
 
         if(!deletedReview) return res.status(200).json({ "message": "No Review with that id found in db" });
