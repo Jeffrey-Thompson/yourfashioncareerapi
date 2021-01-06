@@ -17,6 +17,7 @@ const register = async (req, res) => {
     req.body.password = hash;
     // create user with req.body and hashed password
     const createdUser = await db.User.create({ ...req.body, password: hash });
+    console.log("Got this far")
 
     return res
       .status(201)
