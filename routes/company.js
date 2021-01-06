@@ -11,7 +11,7 @@ router.delete('/:id', controller.companies.destroy);
 router.get('/:id/reviews', controller.companies.reviewIndex);
 router.get('/:id/reviews/:reviewId', controller.companies.showReview);
 router.post('/:id/reviews', controller.companies.createReview);
-router.put('/:id/reviews/:reviewId', controller.companies.updateReview);
-router.delete('/:id/reviews/:reviewId', controller.companies.deleteReview);
+router.put('/reviews/:reviewId', controller.companies.updateReview);
+router.delete('/reviews/:reviewId', controller.companies.deleteReview);
 // exports
 module.exports = router;
