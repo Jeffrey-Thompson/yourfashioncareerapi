@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 // POST Register Route
 const register = async (req, res) => {
   try {
+    console.log(req.body)
     const foundUser = await db.User.findOne({ email: req.body.email });
 
     if (foundUser) {
