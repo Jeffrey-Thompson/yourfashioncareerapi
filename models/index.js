@@ -9,7 +9,7 @@ const configOptions = {
 };
 
 mongoose.connect(connectionString, configOptions)
-    .then(() => console.log("MongoDB successfully connected..."))
+    .then(() => console.log("MongoDB successfully connected...on " + connectionString))
     .catch((err) => console.log(`MongoDB connection error: ${err}`));
 
 module.exports = {
